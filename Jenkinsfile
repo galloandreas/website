@@ -9,7 +9,7 @@ node {
 
     /*Building the image using the file DockerFile*/
     stage('Build image') {
-        app = docker.build("nginx/website")
+        app = docker.build("galloandreas/website")
     }
 
     /*Pushing image to repository*/

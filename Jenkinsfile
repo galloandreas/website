@@ -2,11 +2,10 @@ node {
     def app
 
     /*Git Repository Checkout*/
-    try {
-        stage('Checkout') {
-            checkout scm
-        }
+    stage('Checkout') {
+        checkout scm
     }
+
 
     /*Building the image using the file DockerFile*/
     stage('Build image') {

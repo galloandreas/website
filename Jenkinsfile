@@ -6,7 +6,6 @@ node {
         checkout scm
     }
 
-
     /*Building the image using the file DockerFile*/
     stage('Build image') {
         app = docker.build("galloandreas/website")

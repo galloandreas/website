@@ -11,13 +11,13 @@ node {
     /*Running Static HTML Test on Sonar*/
     stage('Unit Test') {
         echo 'Starting AWS Test Server'
-        sh "aws ec2 start-instances --instance-ids ${aws_test_server_ids}"
+        sh "aws ec2 start-instances --instance-ids ${aws_testserver_ids}"
         echo 'Waiting for server initalization'
         sleep 60
         echo 'Running Sonar Scanner'
         sh "sonar-scanner -Dsonar.projectKey=${sonar_project} -Dsonar.sources=/opt/workspace/website"
         sleep 60
-        sh "aws ec2 stop-instances --instance-ids ${aws_test_server_ids}"
+        sh "aws ec2 stop-instances --instance-ids ${aws_testserver_ids}"
     }
 
     /*Building the image using the file DockerFile*/

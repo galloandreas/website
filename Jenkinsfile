@@ -28,8 +28,10 @@ node {
 
     /*Building the image using the file DockerFile*/
     stage('Build image') {
-        app = docker.build("galloandreas/website")
-        echo 'Docker Image built..'
+        agent any
+        steps {
+            sh 'docker build -t shanem/spring-petclinic:latest .'
+        }
     }
 
     /*Pushing image to repository*/

@@ -15,7 +15,7 @@ node {
         echo 'Waiting for server initalization'
         sleep 60
         echo 'Running Sonar Scanner'
-        sh "sonar-scanner -Dsonar.projectKey=${sonar_project} -Dsonar.sources=/opt/workspace/website"
+        sh "sonar-scanner -Dsonar.projectKey=${sonar_project} -Dsonar.sources=."
         sleep 60
         sh "aws ec2 stop-instances --instance-ids ${aws_testserver_ids}"
     }

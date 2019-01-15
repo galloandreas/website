@@ -3,6 +3,12 @@ node {
     def aws_testserver_ids = 'i-0acb94ab358fe82b2'
     def sonar_project = 'website'
 
+    /*Docker Initialize*/
+    stage('Initialize') {
+        def dockerHome = tool 'Docker'
+        env.PATH = "${dockerHome}/bin:${env.PATH}"
+    }
+
     /*Git Repository Checkout*/
     stage('GitHub Checkout') {
         checkout scm

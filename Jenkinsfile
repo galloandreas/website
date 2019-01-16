@@ -23,7 +23,7 @@ node {
         echo 'Running Sonar Scanner'
         sh "sonar-scanner -Dsonar.projectKey=${sonar_project} -Dsonar.sources=."
         sleep 60
-        sh "aws ec2 stop-instances --instance-ids ${aws_testserver_ids}"
+        /*sh "aws ec2 stop-instances --instance-ids ${aws_testserver_ids}"*/
     }
 
     /*Building the image using the file DockerFile*/

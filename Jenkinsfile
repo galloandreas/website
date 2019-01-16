@@ -31,15 +31,12 @@ node {
     stage("SonarQube Quality Gate") { 
         timeout(time: 1, unit: 'MINUTES') { 
            def qg = waitForQualityGate() 
+            sh "aws ec2 stop-instances --instance-ids ${aws_testserver_ids}"
            if (qg.status != 'OK') {
             error "Pipeline aborted due to quality gate failure: ${qg.status}"
-            sh "aws ec2 stop-instances --instance-ids ${aws_testserver_ids}"*/
-           } else {
-            error("Build failed because of Sonar Quality Gate Failure")
            }
         }
     }
-
 
     /*Building the image using the file DockerFile*/
     stage('Build image') {

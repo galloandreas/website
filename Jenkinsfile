@@ -41,17 +41,17 @@ node {
     }
 
 
-    /*Building the image using the file DockerFile
+    /*Building the image using the file DockerFile*/
     stage('Build image') {
         app = docker.build("galloandreas/website")
     }
 
-    /*Pushing image to repository
+    /*Pushing image to repository*/
     stage('Push Image to Repository') {
         echo '..pushing to Docker Hub'
         docker.withRegistry('https://registry.hub.docker.com', 'dockerhub-credentials') {
             app.push("${env.BUILD_NUMBER}")
             app.push("latest")
         }
-    }*/
+    }
 }

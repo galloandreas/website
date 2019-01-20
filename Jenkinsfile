@@ -47,8 +47,7 @@ node {
     stage('Push Image to Repository') {
         echo '..pushing to Docker Hub'
         docker.withRegistry('https://registry.hub.docker.com', 'dockerhub-credentials') {
-            app.push("${env.BUILD_NUMBER}")
-            app.push("latest")
+            app.push("features")
         }
     }
 }
